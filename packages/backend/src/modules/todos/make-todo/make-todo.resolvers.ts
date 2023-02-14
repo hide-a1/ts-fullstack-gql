@@ -10,11 +10,7 @@ export const resolvers: Resolvers<MyContext> = {
         },
       });
       return {
-        todo: {
-          ...newTodo,
-          updatedAt: newTodo.updatedAt.toISOString(),
-          createdAt: newTodo.createdAt.toISOString(),
-        },
+        todo: newTodo,
       };
     },
   },
