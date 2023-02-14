@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import { useGetTodosQuery } from "./__generated__/graphql";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { data, loading, error } = useGetTodosQuery();
 
   return (
     <div className="App">
       <div>
-        <h1 className="bg-red-600">hello world</h1>
+        {data?.getTodos?.todos?.map((item) => (
+          <p key={item?.id}>
+            {item?.title} {item?.createdAt.toISOString()}
+          </p>
+        ))}
       </div>
     </div>
   );
